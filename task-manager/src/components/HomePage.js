@@ -129,7 +129,6 @@ const HomePage = () => {
           </Link>
         </div>
 
-        {/* Search, Filter, and Sort Controls */}
         <div className="mb-6 flex space-x-4">
           <div className="relative flex-grow">
             <input

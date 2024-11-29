@@ -13,14 +13,13 @@ const EditTaskPage = () => {
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch existing task data
   useEffect(() => {
     const fetchTask = async () => {
       try {
         console.log('Fetching task with ID:', taskId);
         const response = await axios.get(`https://task-manager-backend-a15g.onrender.com/api/tasks/${taskId}`);
         const taskData = response.data;
-        
+
         setTask(taskData.task);
         setPriority(taskData.priority);
         setDueDate(taskData.dueDate);
@@ -35,7 +34,6 @@ const EditTaskPage = () => {
     fetchTask();
   }, [taskId]);
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,7 +59,6 @@ const EditTaskPage = () => {
     }
   };
 
-  // Render loading state
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -82,7 +79,6 @@ const EditTaskPage = () => {
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Task Title */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="task">
                 Task Title
@@ -100,7 +96,6 @@ const EditTaskPage = () => {
               />
             </div>
 
-            {/* Priority */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="priority">
                 Priority
@@ -121,7 +116,6 @@ const EditTaskPage = () => {
               </select>
             </div>
 
-            {/* Due Date */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="dueDate">
                 Due Date
@@ -138,7 +132,6 @@ const EditTaskPage = () => {
               />
             </div>
 
-            {/* Notes */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="notes">
                 Notes
@@ -155,7 +148,6 @@ const EditTaskPage = () => {
               />
             </div>
 
-            {/* File Attachment */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="file">
                 Attach File
@@ -176,7 +168,6 @@ const EditTaskPage = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div className="pt-4">
               <button
                 type="submit"

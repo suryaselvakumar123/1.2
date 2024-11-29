@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TaskItem = ({ task, onEdit, onDelete }) => {
-  // Determine priority color and icon
+
   const getPriorityStyles = () => {
     switch(task.priority) {
       case 'High':
@@ -29,17 +29,17 @@ const TaskItem = ({ task, onEdit, onDelete }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none"></div>
 
       <div className="relative z-10">
-        {/* Task Name */}
+      
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-2xl font-bold text-gray-800 tracking-tight">{task.task}</h3>
         </div>
 
-        {/* Priority */}
+       
         <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${bgColor}`}>
           {icon} {task.priority}
         </div>
 
-        {/* Due Date */}
+      
         <div className="mt-4 text-sm text-gray-500 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 011 1v1h1a1 1 0 110 2H7v1a1 1 0 11-2 0v-1H4a1 1 0 110-2h1V8a1 1 0 011-1z" clipRule="evenodd" />
@@ -47,7 +47,7 @@ const TaskItem = ({ task, onEdit, onDelete }) => {
           <span>{task.dueDate}</span>
         </div>
 
-        {/* Notes */}
+     
         {task.notes && (
           <div className="mt-4 text-sm text-gray-600">
             <div className="flex items-start">
@@ -59,20 +59,19 @@ const TaskItem = ({ task, onEdit, onDelete }) => {
           </div>
         )}
 
-        {/* Show the uploaded file */}
         {task.file && (
           <div className="mt-4 flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" />
             </svg>
-            {/* Display the file URL */}
+
             <a href={task.file} className="text-blue-500" target="_blank" rel="noopener noreferrer">
-              {task.file.split('/').pop()} {/* Extract filename from path */}
+              {task.file.split('/').pop()}
             </a>
           </div>
         )}
         
-        {/* Action Buttons */}
+        
         <div className="mt-6 flex space-x-3">
           <button
             className="flex-1 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all duration-200 ease-in-out"

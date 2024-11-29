@@ -5,14 +5,12 @@ import axios from 'axios';
 const AddTaskPage = () => {
   const navigate = useNavigate();
 
-  // State variables to hold form data
   const [task, setTask] = useState('');
   const [priority, setPriority] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [notes, setNotes] = useState('');
   const [file, setFile] = useState(null);
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,20 +19,19 @@ const AddTaskPage = () => {
     formData.append('priority', priority);
     formData.append('dueDate', dueDate);
     formData.append('notes', notes);
-    if (file) formData.append('file', file); // Append file if selected
+    if (file) formData.append('file', file);
 
     try {
-      // Send the form data to the backend API
       const response = await axios.post('https://task-manager-backend-a15g.onrender.com/api/tasks', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
 
-      console.log('Task added:', response.data); // Log the response data
-      navigate('/'); // Redirect to home page after successful task addition
+      console.log('Task added:', response.data);
+      navigate('/');
     } catch (error) {
-      console.error('Error adding task:', error); // Log any errors
+      console.error('Error adding task:', error);
     }
   };
 
@@ -47,7 +44,6 @@ const AddTaskPage = () => {
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Task Title */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="task">
                 Task Title
@@ -65,7 +61,6 @@ const AddTaskPage = () => {
               />
             </div>
 
-            {/* Priority */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="priority">
                 Priority
@@ -86,7 +81,6 @@ const AddTaskPage = () => {
               </select>
             </div>
 
-            {/* Due Date */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="dueDate">
                 Due Date
@@ -103,7 +97,6 @@ const AddTaskPage = () => {
               />
             </div>
 
-            {/* Notes */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="notes">
                 Notes
@@ -120,7 +113,6 @@ const AddTaskPage = () => {
               />
             </div>
 
-            {/* File Attachment */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="file">
                 Attach File
@@ -141,7 +133,6 @@ const AddTaskPage = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div className="pt-4">
               <button
                 type="submit"
